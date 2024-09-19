@@ -1,0 +1,10 @@
+Flask==3.0.0
+Werkzeug==3.0.1
+flask-restful==0.3.9
+requests==2.26.0
+PyJWT==2.3.0
+gunicorn
+pymongo
+bcrypt
+python-dotenv
+flask-cors
