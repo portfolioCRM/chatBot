@@ -132,6 +132,7 @@ server_Flask_chat_boot/
 ## Usage
 
 To run the server, execute the `server.py` file. Make sure to install the required dependencies listed in `requirements.txt`.
+for more details see [Use file](USE.md)
 
 ## Testing
 
