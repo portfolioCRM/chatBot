@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: flask-app
+    env: python
+    plan: free
+    repo: https://github.com/portfolioCRM/chatBoot
+    branch: develop
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn "server:app" -b :10000
+    envVars:
+      - key: FLASK_ENV
+        value: production
+    region: frankfurt
