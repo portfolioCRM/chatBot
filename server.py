@@ -1,4 +1,5 @@
 from flask import Flask, request
+from flask_cors import CORS
 import os
 from dotenv import load_dotenv
 from flask_babel import Babel, _
@@ -19,6 +20,16 @@ and run the application.
 '''
 app = Flask(__name__)
 
+# CORS Configuration
+'''
+Allow all origins for now. This enables cross-origin resource sharing 
+(CORS) for all incoming requests. In the future, this should be updated 
+to restrict access to specific origins, such as your production site 
+and the mobile application.
+'''
+CORS(app, resources={r"/*": {"origins": "*"}})
+
+# babel time zone and language Configuration
 '''
 Define the default locale and supported locales for the application.
 Specify the languages your application will support here.
@@ -63,8 +74,9 @@ with the Flask application. The `healthcare` function sets up the routes
 defined in the health blueprint so that they can be served by the Flask 
 application.
 '''
-from routes import healthcare
+from routes import healthcare, faq
 healthcare(app)
+faq(app)
 
 if __name__ == '__main__':
     # Read the environment mode from environment variables

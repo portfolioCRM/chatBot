@@ -25,3 +25,30 @@ msgstr "El servidor funciona con éxito"
 
 msgid "Server runs failed"
 msgstr "El servidor falló"
+
+msgid "FAQ list retrieved successfully"
+msgstr "Lista de preguntas frecuentes recuperada con éxito"
+
+msgid "No FAQs available"
+msgstr "No hay preguntas frecuentes disponibles"
+
+msgid "FAQ not found"
+msgstr "Pregunta frecuente no encontrada"
+
+msgid "FAQ created successfully"
+msgstr "Pregunta frecuente creada con éxito"
+
+msgid "Invalid input"
+msgstr "Entrada no válida"
+
+msgid "FAQ deleted successfully"
+msgstr "Pregunta frecuente eliminada con éxito"
+
+msgid "Deleted %d FAQs"
+msgstr "Eliminadas %d preguntas frecuentes"
+
+msgid "Question parameter is required"
+msgstr "Se requiere el parámetro de pregunta"
+
+msgid "An internal server error occurred at the faq connection"
+msgstr "Se produjo un error interno del servidor en la conexión de preguntas frecuentes"
