@@ -26,3 +26,30 @@ msgstr "Le serveur fonctionne avec succès"
 
 msgid "Server runs failed"
 msgstr "Le serveur a échoué"
+
+msgid "FAQ list retrieved successfully"
+msgstr "Liste des FAQ récupérée avec succès"
+
+msgid "No FAQs available"
+msgstr "Aucune FAQ disponible"
+
+msgid "FAQ not found"
+msgstr "FAQ non trouvée"
+
+msgid "FAQ created successfully"
+msgstr "FAQ créée avec succès"
+
+msgid "Invalid input"
+msgstr "Entrée invalide"
+
+msgid "FAQ deleted successfully"
+msgstr "FAQ supprimée avec succès"
+
+msgid "Deleted %d FAQs"
+msgstr "Supprimé %d FAQ"
+
+msgid "Question parameter is required"
+msgstr "Le paramètre question est requis"
+
+msgid "An internal server error occurred at the faq connection"
+msgstr "Une erreur interne du serveur s'est produite lors de la connexion des FAQ"

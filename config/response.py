@@ -1,4 +1,5 @@
 from flask import jsonify
+from flask_babel import gettext as _
 
 def create_response(message, status=200, success=True, data=None):
     """
@@ -14,7 +15,7 @@ def create_response(message, status=200, success=True, data=None):
         Response: A Flask JSON response object.
     """
     response = {
-        'message': message,
+        'message': _(message),
         'status': status,
         'success': success
     }

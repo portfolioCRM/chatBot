@@ -26,3 +26,30 @@ msgstr "يعمل الخادم بنجاح"
 
 msgid "Server runs failed"
 msgstr "فشل الخادم"
+
+msgid "FAQ list retrieved successfully"
+msgstr "تم استرداد قائمة الأسئلة المتداولة بنجاح"
+
+msgid "No FAQs available"
+msgstr "لا توجد أسئلة متداولة متاحة"
+
+msgid "FAQ not found"
+msgstr "لم يتم العثور على السؤال المتداول"
+
+msgid "FAQ created successfully"
+msgstr "تم إنشاء السؤال المتداول بنجاح"
+
+msgid "Invalid input"
+msgstr "إدخال غير صالح"
+
+msgid "FAQ deleted successfully"
+msgstr "تم حذف السؤال المتداول بنجاح"
+
+msgid "Deleted %d FAQs"
+msgstr "تم حذف %d سؤالاً متداولاً"
+
+msgid "Question parameter is required"
+msgstr "مطلوب معلمة السؤال"
+
+msgid "An internal server error occurred at the faq connection"
+msgstr "حدث خطأ داخلي في الخادم في اتصال الأسئلة المتداولة"
