@@ -1,6 +1,7 @@
-from flask import Flask
+from flask import Flask, request
 import os
 from dotenv import load_dotenv
+from flask_babel import Babel, _
 
 # Load environment variables from the .env file
 ''' 
@@ -17,6 +18,43 @@ of the Flask application and is used to register routes, handle requests,
 and run the application.
 '''
 app = Flask(__name__)
+
+'''
+Define the default locale and supported locales for the application.
+Specify the languages your application will support here.
+'''
+app.config['BABEL_DEFAULT_LOCALE'] = 'fr'
+app.config['BABEL_SUPPORTED_LOCALES'] = ['en', 'es', 'fr', 'ar']
+
+'''
+Initialize the Babel extension to support internationalization (i18n).
+This allows the application to respond to different locales and timezones.
+'''
+babel = Babel(app)
+
+def get_locale():
+    '''
+    Determine the best matching locale based on the client's request.
+    
+    Returns:
+        str: The best match locale from the supported locales.
+    '''
+    return request.accept_languages.best_match(['en', 'fr', 'es', 'ar'])
+
+def get_timezone():
+    '''
+    Define the default timezone for the application.
+    
+    Returns:
+        str: The default timezone.
+    '''
+    return 'UTC'
+
+'''
+Register the locale and timezone selector functions with Babel.
+'''
+babel.init_app(app, locale_selector=get_locale, timezone_selector=get_timezone)
+
 
 # Import and register the healthcare Blueprint from the routes module
 '''
