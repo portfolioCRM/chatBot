@@ -13,7 +13,7 @@ jobs:
             pip install flask gunicorn
       - run:
           name: Start Flask app
-          command: gunicorn app:app --bind 0.0.0.0:$PORT &
+          command: PORT=8000 gunicorn app:app --bind 0.0.0.0:$PORT &
       - run:
           name: Wait for Flask server to start
           command: sleep 10
@@ -26,8 +26,7 @@ jobs:
       - run:
           name: Run Newman tests
           command: |
-            newman run path/to/your/collection.json \
-            --environment path/to/your/environment.json \
+            newman run test/post-man_collection.json \
             --reporters cli
 
   security-test:
