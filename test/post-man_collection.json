@@ -1,48 +1,138 @@
 {
-    "info": {
+  "info": {
       "name": "Health Check",
       "description": "Collection to test the health route of the Flask application.",
       "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-    },
-    "item": [
+  },
+  "item": [
       {
-        "name": "Health Check Test",
-        "request": {
-          "method": "GET",
-          "header": [],
-          "url": {
-            "raw": "http://localhost:8000/",
-            "protocol": "http",
-            "host": [
-              "localhost"
-            ],
-            "port": "8000",
-            "path": [
-              ""
-            ]
-          }
-        },
-        "response": [],
-        "event": [
-          {
-            "listen": "test",
-            "script": {
-              "exec": [
-                "pm.test('Status code is 200', function () {",
-                "    pm.response.to.have.status(200);",
-                "});",
-                "",
-                "pm.test('Response should contain success message', function () {",
-                "    const response = pm.response.json();",
-                "    pm.expect(response.success).to.be.true;",
-                "    pm.expect(response.message).to.equal('Server runs with success');",
-                "});"
+          "name": "Health Check Test - English",
+          "request": {
+              "method": "GET",
+              "header": [
+                  {
+                      "key": "Accept-Language",
+                      "value": "en"
+                  }
               ],
-              "type": "text/javascript"
-            }
-          }
-        ]
+              "url": {
+                  "raw": "http://localhost:8000/",
+                  "protocol": "http",
+                  "host": [
+                      "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                      ""
+                  ]
+              }
+          },
+          "response": [],
+          "event": [
+              {
+                  "listen": "test",
+                  "script": {
+                      "exec": [
+                          "pm.test('Status code is 200', function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test('Response should contain success message in English', function () {",
+                          "    const response = pm.response.json();",
+                          "    pm.expect(response.success).to.be.true;",
+                          "    pm.expect(response.message).to.equal('Server runs with success');",
+                          "});"
+                      ],
+                      "type": "text/javascript"
+                  }
+              }
+          ]
+      },
+      {
+          "name": "Health Check Test - Arabic",
+          "request": {
+              "method": "GET",
+              "header": [
+                  {
+                      "key": "Accept-Language",
+                      "value": "ar"
+                  }
+              ],
+              "url": {
+                  "raw": "http://localhost:8000/",
+                  "protocol": "http",
+                  "host": [
+                      "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                      ""
+                  ]
+              }
+          },
+          "response": [],
+          "event": [
+              {
+                  "listen": "test",
+                  "script": {
+                      "exec": [
+                          "pm.test('Status code is 200', function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test('Response should contain success message in Arabic', function () {",
+                          "    const response = pm.response.json();",
+                          "    pm.expect(response.success).to.be.true;",
+                          "    pm.expect(response.message).to.equal('Le serveur fonctionne avec succès');",
+                          "});"
+                      ],
+                      "type": "text/javascript"
+                  }
+              }
+          ]
+      },
+      {
+          "name": "Health Check Test - French",
+          "request": {
+              "method": "GET",
+              "header": [
+                  {
+                      "key": "Accept-Language",
+                      "value": "fr"
+                  }
+              ],
+              "url": {
+                  "raw": "http://localhost:8000/",
+                  "protocol": "http",
+                  "host": [
+                      "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                      ""
+                  ]
+              }
+          },
+          "response": [],
+          "event": [
+              {
+                  "listen": "test",
+                  "script": {
+                      "exec": [
+                          "pm.test('Status code is 200', function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test('Response should contain success message in French', function () {",
+                          "    const response = pm.response.json();",
+                          "    pm.expect(response.success).to.be.true;",
+                          "    pm.expect(response.message).to.equal('Le serveur fonctionne avec succès');",
+                          "});"
+                      ],
+                      "type": "text/javascript"
+                  }
+              }
+          ]
       }
-    ]
-  }
-  
+  ]
+}

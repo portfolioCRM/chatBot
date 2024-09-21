@@ -1,4 +1,8 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint
+from flask_babel import gettext as _
+
+from config.response import success_response, server_error_response
+
 
 # Create a Blueprint for health-related routes
 # A Blueprint in Flask is a way to organize routes and handlers into separate modules.
@@ -17,20 +21,12 @@ def home():
         Response: A JSON response with a message, status code, and success status.
     """
     try:
+        response_message = _("Server runs with success")
         # Attempt to generate a success response
-        response = {
-            'message': 'Server runs with success',
-            'status': 200,
-            'success': True
-        }
+        return success_response(response_message)
     except Exception as e:
+        response_message = _("Server runs failed")
         # Handle any errors that occur and provide a failure response
-        response = {
-            'message': 'Server runs failed',
-            'status': 500,
-            'success': False
-        }
+        return server_error_response(response_message)
         # Optionally, log the exception e for debugging purposes
         # print(f"Error: {e}")
-
-    return jsonify(response)

@@ -8,3 +8,4 @@ pymongo
 bcrypt
 python-dotenv
 flask-cors
+flask_babel
