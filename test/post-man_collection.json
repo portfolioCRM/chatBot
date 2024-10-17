@@ -1,138 +1,817 @@
 {
-  "info": {
-      "name": "Health Check",
-      "description": "Collection to test the health route of the Flask application.",
-      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-      {
-          "name": "Health Check Test - English",
-          "request": {
-              "method": "GET",
-              "header": [
-                  {
-                      "key": "Accept-Language",
-                      "value": "en"
-                  }
-              ],
-              "url": {
-                  "raw": "http://localhost:8000/",
-                  "protocol": "http",
-                  "host": [
-                      "localhost"
-                  ],
-                  "port": "8000",
-                  "path": [
-                      ""
-                  ]
-              }
-          },
-          "response": [],
-          "event": [
-              {
-                  "listen": "test",
-                  "script": {
-                      "exec": [
-                          "pm.test('Status code is 200', function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test('Response should contain success message in English', function () {",
-                          "    const response = pm.response.json();",
-                          "    pm.expect(response.success).to.be.true;",
-                          "    pm.expect(response.message).to.equal('Server runs with success');",
-                          "});"
-                      ],
-                      "type": "text/javascript"
-                  }
-              }
-          ]
-      },
-      {
-          "name": "Health Check Test - Arabic",
-          "request": {
-              "method": "GET",
-              "header": [
-                  {
-                      "key": "Accept-Language",
-                      "value": "ar"
-                  }
-              ],
-              "url": {
-                  "raw": "http://localhost:8000/",
-                  "protocol": "http",
-                  "host": [
-                      "localhost"
-                  ],
-                  "port": "8000",
-                  "path": [
-                      ""
-                  ]
-              }
-          },
-          "response": [],
-          "event": [
-              {
-                  "listen": "test",
-                  "script": {
-                      "exec": [
-                          "pm.test('Status code is 200', function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test('Response should contain success message in Arabic', function () {",
-                          "    const response = pm.response.json();",
-                          "    pm.expect(response.success).to.be.true;",
-                          "    pm.expect(response.message).to.equal('Le serveur fonctionne avec succès');",
-                          "});"
-                      ],
-                      "type": "text/javascript"
-                  }
-              }
-          ]
-      },
-      {
-          "name": "Health Check Test - French",
-          "request": {
-              "method": "GET",
-              "header": [
-                  {
-                      "key": "Accept-Language",
-                      "value": "fr"
-                  }
-              ],
-              "url": {
-                  "raw": "http://localhost:8000/",
-                  "protocol": "http",
-                  "host": [
-                      "localhost"
-                  ],
-                  "port": "8000",
-                  "path": [
-                      ""
-                  ]
-              }
-          },
-          "response": [],
-          "event": [
-              {
-                  "listen": "test",
-                  "script": {
-                      "exec": [
-                          "pm.test('Status code is 200', function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test('Response should contain success message in French', function () {",
-                          "    const response = pm.response.json();",
-                          "    pm.expect(response.success).to.be.true;",
-                          "    pm.expect(response.message).to.equal('Le serveur fonctionne avec succès');",
-                          "});"
-                      ],
-                      "type": "text/javascript"
-                  }
-              }
-          ]
-      }
-  ]
-}
+	"info": {
+	  "_postman_id": "48256824-a63f-439e-ba8c-3acf88c29508",
+	  "name": "chat bot",
+	  "description": "Collection to test the health route and FAQ functionality of the Flask application.",
+	  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+	  "_exporter_id": "34573008"
+	},
+	"item": [
+	  {
+		"name": "0. Health Care",
+		"item": [
+		  {
+			"name": "Health Check Test - English",
+			"event": [
+			  {
+				"listen": "test",
+				"script": {
+				  "exec": [
+					"pm.test('Status code is 200', function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test('Response should contain success message in English', function () {",
+					"    const response = pm.response.json();",
+					"    pm.expect(response.success).to.be.true;",
+					"    pm.expect(response.message).to.equal('Server runs with success');",
+					"});"
+				  ],
+				  "type": "text/javascript"
+				}
+			  }
+			],
+			"request": {
+			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Accept-Language",
+				  "value": "en"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}",
+				"host": [
+				  "{{base_url}}"
+				]
+			  }
+			},
+			"response": []
+		  },
+		  {
+			"name": "Health Check Test - Arabic",
+			"event": [
+			  {
+				"listen": "test",
+				"script": {
+				  "exec": [
+					"pm.test('Status code is 200', function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test('Response should contain success message in Arabic', function () {",
+					"    const response = pm.response.json();",
+					"    pm.expect(response.success).to.be.true;",
+					"    pm.expect(response.message).to.equal('يعمل الخادم بنجاح');",
+					"});"
+				  ],
+				  "type": "text/javascript"
+				}
+			  }
+			],
+			"request": {
+			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Accept-Language",
+				  "value": "ar"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}",
+				"host": [
+				  "{{base_url}}"
+				]
+			  }
+			},
+			"response": []
+		  },
+		  {
+			"name": "Health Check Test - French",
+			"event": [
+			  {
+				"listen": "test",
+				"script": {
+				  "exec": [
+					"pm.test('Status code is 200', function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test('Response should contain success message in French', function () {",
+					"    const response = pm.response.json();",
+					"    pm.expect(response.success).to.be.true;",
+					"    pm.expect(response.message).to.equal('Le serveur fonctionne avec succès');",
+					"});"
+				  ],
+				  "type": "text/javascript"
+				}
+			  }
+			],
+			"request": {
+			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Accept-Language",
+				  "value": "fr"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}",
+				"host": [
+				  "{{base_url}}"
+				]
+			  }
+			},
+			"response": []
+		  }
+		]
+	  },
+	  {
+		"name": "1. Faq List",
+		"item": [
+			{
+				"name": "FAQ Tests - English",
+				"item": [
+				  {
+					"name": "Create an FAQ - English",
+					"event": [
+					  {
+						"listen": "test",
+						"script": {
+						  "exec": [
+							"pm.test('Status code is 201', function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test('Response should contain success message in English', function () {",
+							"    const response = pm.response.json();",
+							"    pm.expect(response.success).to.be.true;",
+							"    pm.expect(response.message).to.equal('FAQ created successfully');",
+							"});"
+						  ],
+						  "type": "text/javascript"
+						}
+					  }
+					],
+					"request": {
+					  "method": "POST",
+					  "header": [
+						{
+						  "key": "Accept-Language",
+						  "value": "en"
+						}
+					  ],
+					  "body": {
+						"mode": "raw",
+						"raw": "{ \"question\": \"What is this?\", \"answer\": \"This is a test.\" }",
+						"options": {
+						  "raw": {
+							"language": "json"
+						  }
+						}
+					  },
+					  "url": {
+						"raw": "{{base_url}}/faq",
+						"host": [
+						  "{{base_url}}",
+						  "faq"
+						]
+					  }
+					},
+					"response": []
+				  },
+				  {
+					"name": "Create Multiple FAQs - English",
+					"event": [
+					  {
+						"listen": "test",
+						"script": {
+						  "exec": [
+							"pm.test('Status code is 201', function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test('Response should contain success message in English', function () {",
+							"    const response = pm.response.json();",
+							"    pm.expect(response.success).to.be.true;",
+							"    pm.expect(response.message).to.equal('Multiple FAQs created successfully');",
+							"});"
+						  ],
+						  "type": "text/javascript"
+						}
+					  }
+					],
+					"request": {
+					  "method": "POST",
+					  "header": [
+						{
+						  "key": "Accept-Language",
+						  "value": "en"
+						}
+					  ],
+					  "body": {
+						"mode": "raw",
+						"raw": "[{\"question\": \"Question 1?\", \"answer\": \"Answer 1.\"}, {\"question\": \"Question 2?\", \"answer\": \"Answer 2.\"}]",
+						"options": {
+						  "raw": {
+							"language": "json"
+						  }
+						}
+					  },
+					  "url": {
+						"raw": "{{base_url}}/faq/bulk-create",
+						"host": [
+						  "{{base_url}}",
+						  "faq",
+						  "bulk-create"
+						]
+					  }
+					},
+					"response": []
+				  },
+				  {
+					"name": "Get FAQ by Question - English",
+					"event": [
+					  {
+						"listen": "test",
+						"script": {
+						  "exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test('Response should contain the correct FAQ', function () {",
+							"    const response = pm.response.json();",
+							"    pm.expect(response.success).to.be.true;",
+							"    pm.expect(response.data.question).to.equal(\"What is this?\");",
+							"});"
+						  ],
+						  "type": "text/javascript"
+						}
+					  }
+					],
+					"request": {
+					  "method": "GET",
+					  "header": [
+						{
+						  "key": "Accept-Language",
+						  "value": "en"
+						}
+					  ],
+					  "url": {
+						"raw": "{{base_url}}/faq?question=What%20is%20this%3F",
+						"host": [
+						  "{{base_url}}",
+						  "faq"
+						],
+						"query": [
+						  {
+							"key": "question",
+							"value": "What is this?"
+						  }
+						]
+					  }
+					},
+					"response": []
+				  },
+				  {
+					"name": "Delete One FAQ - English",
+					"event": [
+					  {
+						"listen": "test",
+						"script": {
+						  "exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test('Response should confirm deletion of the FAQ', function () {",
+							"    const response = pm.response.json();",
+							"    pm.expect(response.success).to.be.true;",
+							"    pm.expect(response.message).to.equal('FAQ deleted successfully');",
+							"});"
+						  ],
+						  "type": "text/javascript"
+						}
+					  }
+					],
+					"request": {
+					  "method": "DELETE",
+					  "header": [
+						{
+						  "key": "Accept-Language",
+						  "value": "en"
+						}
+					  ],
+					  "url": {
+						"raw": "{{base_url}}/faq/1",
+						"host": [
+						  "{{base_url}}",
+						  "faq",
+						  "1"
+						]
+					  }
+					},
+					"response": []
+				  },
+				  {
+					"name": "Delete All FAQs - English",
+					"event": [
+					  {
+						"listen": "test",
+						"script": {
+						  "exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test('Response should confirm deletion of all FAQs', function () {",
+							"    const response = pm.response.json();",
+							"    pm.expect(response.success).to.be.true;",
+							"    pm.expect(response.message).to.equal('All FAQs deleted successfully');",
+							"});"
+						  ],
+						  "type": "text/javascript"
+						}
+					  }
+					],
+					"request": {
+					  "method": "DELETE",
+					  "header": [
+						{
+						  "key": "Accept-Language",
+						  "value": "en"
+						}
+					  ],
+					  "url": {
+						"raw": "{{base_url}}/faq/delete-all",
+						"host": [
+						  "{{base_url}}",
+						  "faq",
+						  "delete-all"
+						]
+					  }
+					},
+					"response": []
+				  }
+				]
+			  },
+		  {
+			"name": "FAQ Tests - Arabic",
+			"item": [
+			  {
+				"name": "Create an FAQ - Arabic",
+				"event": [
+				  {
+					"listen": "test",
+					"script": {
+					  "exec": [
+						"pm.test('Status code is 201', function () {",
+						"    pm.response.to.have.status(201);",
+						"});",
+						"",
+						"pm.test('Response should contain success message in Arabic', function () {",
+						"    const response = pm.response.json();",
+						"    pm.expect(response.success).to.be.true;",
+						"    pm.expect(response.message).to.equal('تم إنشاء السؤال المتداول بنجاح');",
+						"});"
+					  ],
+					  "type": "text/javascript"
+					}
+				  }
+				],
+				"request": {
+				  "method": "POST",
+				  "header": [
+					{
+					  "key": "Accept-Language",
+					  "value": "ar"
+					}
+				  ],
+				  "body": {
+					"mode": "raw",
+					"raw": "{ \"question\": \"ما هذا؟\", \"answer\": \"هذا اختبار.\" }",
+					"options": {
+					  "raw": {
+						"language": "json"
+					  }
+					}
+				  },
+				  "url": {
+					"raw": "{{base_url}}/faq",
+					"host": [
+					  "{{base_url}}",
+					  "faq"
+					]
+				  }
+				},
+				"response": []
+			  },
+			  {
+				"name": "Create Multiple FAQs - Arabic",
+				"event": [
+				  {
+					"listen": "test",
+					"script": {
+					  "exec": [
+						"pm.test('Status code is 201', function () {",
+						"    pm.response.to.have.status(201);",
+						"});",
+						"",
+						"pm.test('Response should contain success message in Arabic', function () {",
+						"    const response = pm.response.json();",
+						"    pm.expect(response.success).to.be.true;",
+						"    pm.expect(response.message).to.equal('تم إنشاء عدة أسئلة متداولة بنجاح');",
+						"});"
+					  ],
+					  "type": "text/javascript"
+					}
+				  }
+				],
+				"request": {
+				  "method": "POST",
+				  "header": [
+					{
+					  "key": "Accept-Language",
+					  "value": "ar"
+					}
+				  ],
+				  "body": {
+					"mode": "raw",
+					"raw": "[{\"question\": \"السؤال الأول؟\", \"answer\": \"الإجابة الأولى.\"}, {\"question\": \"السؤال الثاني؟\", \"answer\": \"الإجابة الثانية.\"}]",
+					"options": {
+					  "raw": {
+						"language": "json"
+					  }
+					}
+				  },
+				  "url": {
+					"raw": "{{base_url}}/faq/bulk-create",
+					"host": [
+					  "{{base_url}}",
+					  "faq",
+					  "bulk-create"
+					]
+				  }
+				},
+				"response": []
+			  },
+			  {
+				"name": "Get FAQ by Question - Arabic",
+				"event": [
+				  {
+					"listen": "test",
+					"script": {
+					  "exec": [
+						"pm.test('Status code is 200', function () {",
+						"    pm.response.to.have.status(200);",
+						"});",
+						"",
+						"pm.test('Response should contain the correct FAQ', function () {",
+						"    const response = pm.response.json();",
+						"    pm.expect(response.success).to.be.true;",
+						"    pm.expect(response.data.question).to.equal('ما هذا؟');",
+						"});"
+					  ],
+					  "type": "text/javascript"
+					}
+				  }
+				],
+				"request": {
+				  "method": "GET",
+				  "header": [
+					{
+					  "key": "Accept-Language",
+					  "value": "ar"
+					}
+				  ],
+				  "url": {
+					"raw": "{{base_url}}/faq?question=ما%20هذا%3F",
+					"host": [
+					  "{{base_url}}",
+					  "faq"
+					],
+					"query": [
+					  {
+						"key": "question",
+						"value": "ما هذا؟"
+					  }
+					]
+				  }
+				},
+				"response": []
+			  },
+			  {
+				"name": "Delete One FAQ - Arabic",
+				"event": [
+				  {
+					"listen": "test",
+					"script": {
+					  "exec": [
+						"pm.test('Status code is 200', function () {",
+						"    pm.response.to.have.status(200);",
+						"});",
+						"",
+						"pm.test('Response should confirm deletion of the FAQ', function () {",
+						"    const response = pm.response.json();",
+						"    pm.expect(response.success).to.be.true;",
+						"    pm.expect(response.message).to.equal('تم حذف السؤال المتداول بنجاح');",
+						"});"
+					  ],
+					  "type": "text/javascript"
+					}
+				  }
+				],
+				"request": {
+				  "method": "DELETE",
+				  "header": [
+					{
+					  "key": "Accept-Language",
+					  "value": "ar"
+					}
+				  ],
+				  "url": {
+					"raw": "{{base_url}}/faq/1",
+					"host": [
+					  "{{base_url}}",
+					  "faq",
+					  "1"
+					]
+				  }
+				},
+				"response": []
+			  },
+			  {
+				"name": "Delete All FAQs - Arabic",
+				"event": [
+				  {
+					"listen": "test",
+					"script": {
+					  "exec": [
+						"pm.test('Status code is 200', function () {",
+						"    pm.response.to.have.status(200);",
+						"});",
+						"",
+						"pm.test('Response should confirm deletion of all FAQs', function () {",
+						"    const response = pm.response.json();",
+						"    pm.expect(response.success).to.be.true;",
+						"    pm.expect(response.message).to.equal('تم حذف جميع الأسئلة المتداولة بنجاح');",
+						"});"
+					  ],
+					  "type": "text/javascript"
+					}
+				  }
+				],
+				"request": {
+				  "method": "DELETE",
+				  "header": [
+					{
+					  "key": "Accept-Language",
+					  "value": "ar"
+					}
+				  ],
+				  "url": {
+					"raw": "{{base_url}}/faq/delete-all",
+					"host": [
+					  "{{base_url}}",
+					  "faq",
+					  "delete-all"
+					]
+				  }
+				},
+				"response": []
+			  }
+			]
+		  },
+		  {
+			"name": "FAQ Tests - French",
+			"item": [
+			  {
+				"name": "Create an FAQ - French",
+				"event": [
+				  {
+					"listen": "test",
+					"script": {
+					  "exec": [
+						"pm.test('Status code is 201', function () {",
+						"    pm.response.to.have.status(201);",
+						"});",
+						"",
+						"pm.test('Response should contain success message in French', function () {",
+						"    const response = pm.response.json();",
+						"    pm.expect(response.success).to.be.true;",
+						"    pm.expect(response.message).to.equal('FAQ créée avec succès');",
+						"});"
+					  ],
+					  "type": "text/javascript"
+					}
+				  }
+				],
+				"request": {
+				  "method": "POST",
+				  "header": [
+					{
+					  "key": "Accept-Language",
+					  "value": "fr"
+					}
+				  ],
+				  "body": {
+					"mode": "raw",
+					"raw": "{ \"question\": \"Qu'est-ce que c'est?\", \"answer\": \"Ceci est un test.\" }",
+					"options": {
+					  "raw": {
+						"language": "json"
+					  }
+					}
+				  },
+				  "url": {
+					"raw": "{{base_url}}/faq",
+					"host": [
+					  "{{base_url}}",
+					  "faq"
+					]
+				  }
+				},
+				"response": []
+			  },
+			  {
+				"name": "Create Multiple FAQs - French",
+				"event": [
+				  {
+					"listen": "test",
+					"script": {
+					  "exec": [
+						"pm.test('Status code is 201', function () {",
+						"    pm.response.to.have.status(201);",
+						"});",
+						"",
+						"pm.test('Response should contain success message in French', function () {",
+						"    const response = pm.response.json();",
+						"    pm.expect(response.success).to.be.true;",
+						"    pm.expect(response.message).to.equal('Plusieurs FAQs créées avec succès');",
+						"});"
+					  ],
+					  "type": "text/javascript"
+					}
+				  }
+				],
+				"request": {
+				  "method": "POST",
+				  "header": [
+					{
+					  "key": "Accept-Language",
+					  "value": "fr"
+					}
+				  ],
+				  "body": {
+					"mode": "raw",
+					"raw": "[{\"question\": \"Question 1?\", \"answer\": \"Réponse 1.\"}, {\"question\": \"Question 2?\", \"answer\": \"Réponse 2.\"}]",
+					"options": {
+					  "raw": {
+						"language": "json"
+					  }
+					}
+				  },
+				  "url": {
+					"raw": "{{base_url}}/faq/bulk-create",
+					"host": [
+					  "{{base_url}}",
+					  "faq",
+					  "bulk-create"
+					]
+				  }
+				},
+				"response": []
+			  },
+			  {
+				"name": "Get FAQ by Question - French",
+				"event": [
+				  {
+					"listen": "test",
+					"script": {
+					  "exec": [
+						"pm.test('Status code is 200', function () {",
+						"    pm.response.to.have.status(200);",
+						"});",
+						"",
+						"pm.test('Response should contain the correct FAQ', function () {",
+						"    const response = pm.response.json();",
+						"    pm.expect(response.success).to.be.true;",
+						"    pm.expect(response.data.question).to.equal(\"Qu'est-ce que c'est?\");",
+						"});"
+					  ],
+					  "type": "text/javascript"
+					}
+				  }
+				],
+				"request": {
+				  "method": "GET",
+				  "header": [
+					{
+					  "key": "Accept-Language",
+					  "value": "fr"
+					}
+				  ],
+				  "url": {
+					"raw": "{{base_url}}/faq?question=Qu'est-ce%20que%20c'est%3F",
+					"host": [
+					  "{{base_url}}",
+					  "faq"
+					],
+					"query": [
+					  {
+						"key": "question",
+						"value": "Qu'est-ce que c'est?"
+					  }
+					]
+				  }
+				},
+				"response": []
+			  },
+			  {
+				"name": "Delete One FAQ - French",
+				"event": [
+				  {
+					"listen": "test",
+					"script": {
+					  "exec": [
+						"pm.test('Status code is 200', function () {",
+						"    pm.response.to.have.status(200);",
+						"});",
+						"",
+						"pm.test('Response should confirm deletion of the FAQ', function () {",
+						"    const response = pm.response.json();",
+						"    pm.expect(response.success).to.be.true;",
+						"    pm.expect(response.message).to.equal('FAQ supprimée avec succès');",
+						"});"
+					  ],
+					  "type": "text/javascript"
+					}
+				  }
+				],
+				"request": {
+				  "method": "DELETE",
+				  "header": [
+					{
+					  "key": "Accept-Language",
+					  "value": "fr"
+					}
+				  ],
+				  "url": {
+					"raw": "{{base_url}}/faq/1",
+					"host": [
+					  "{{base_url}}",
+					  "faq",
+					  "1"
+					]
+				  }
+				},
+				"response": []
+			  },
+			  {
+				"name": "Delete All FAQs - French",
+				"event": [
+				  {
+					"listen": "test",
+					"script": {
+					  "exec": [
+						"pm.test('Status code is 200', function () {",
+						"    pm.response.to.have.status(200);",
+						"});",
+						"",
+						"pm.test('Response should confirm deletion of all FAQs', function () {",
+						"    const response = pm.response.json();",
+						"    pm.expect(response.success).to.be.true;",
+						"    pm.expect(response.message).to.equal('Toutes les FAQs supprimées avec succès');",
+						"});"
+					  ],
+					  "type": "text/javascript"
+					}
+				  }
+				],
+				"request": {
+				  "method": "DELETE",
+				  "header": [
+					{
+					  "key": "Accept-Language",
+					  "value": "fr"
+					}
+				  ],
+				  "url": {
+					"raw": "{{base_url}}/faq/delete-all",
+					"host": [
+					  "{{base_url}}",
+					  "faq",
+					  "delete-all"
+					]
+				  }
+				},
+				"response": []
+			  }
+			]
+		  }
+		]
+	  }
+	]
+  }
+  

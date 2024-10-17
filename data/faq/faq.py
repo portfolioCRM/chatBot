@@ -1,4 +1,5 @@
 from config.connect import get_db
+from bson.regex import Regex
 
 def get_faqs():
     """Retrieve all FAQs from the collection."""
@@ -10,14 +11,16 @@ def get_faq(question):
     """Retrieve a single FAQ by question."""
     db = get_db()
     collection = db['faq']
-    return collection.find_one({'question': question}, {'_id': 0})
+    res =  list(collection.find({"question": question}, {'_id': 0}))
+    return res
 
 def add_faq(faq):
     """Insert a new FAQ into the collection."""
     db = get_db()
     collection = db['faq']
     result = collection.insert_one(faq)
-    return str(result.inserted_id)
+    faq['_id'] = str(result.inserted_id)
+    return faq
 
 def delete_faq(faq_id):
     """Delete a FAQ by ID."""
@@ -30,5 +33,5 @@ def delete_faqs_by_question():
     """Delete FAQs by question."""
     db = get_db()
     collection = db['faq']
-    result = collection.delete_many()
+    result = collection.delete_many({})
     return result.deleted_count
