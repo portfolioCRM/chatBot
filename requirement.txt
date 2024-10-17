@@ -9,4 +9,4 @@ bcrypt
 python-dotenv
 flask-cors
 flask_babel
-googletrans=4.0.0rc1
+googletrans==4.0.0-rc1
