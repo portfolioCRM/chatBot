@@ -75,8 +75,10 @@ defined in the health blueprint so that they can be served by the Flask
 application.
 '''
 from routes import healthcare, faq
+from routes.ai import choose_algorithm
 healthcare(app)
 faq(app)
+choose_algorithm(app)
 
 if __name__ == '__main__':
     # Read the environment mode from environment variables
