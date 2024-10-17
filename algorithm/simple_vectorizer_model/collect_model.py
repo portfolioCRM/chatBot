@@ -2,6 +2,7 @@ import re
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+from googletrans import Translator
 import spacy
 
 nlp = spacy.load('en_core_web_sm')
@@ -22,7 +23,8 @@ class SimpleChatbotModel:
                             Default is set to the initial FAQ values imported from the module.
         """
         self.qa_database = qa_database
-        self.questions = [entry["question"] for entry in self.qa_database]
+        self.translator = Translator()
+        self.questions = [self.translator.translate(entry['question'], src='fr', dest='en').text for entry in self.qa_database]
         self.responses = [entry["response"] for entry in self.qa_database]
         self.vectorizer = CountVectorizer(stop_words='english')
         self.question_vectors = self.vectorizer.fit_transform(self.questions)
