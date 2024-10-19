@@ -14,6 +14,7 @@ confection==0.1.5
 cymem==2.0.8
 dnspython==2.6.1
 en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+flasgger=0.9.7.1
 Flask==3.0.3
 flask-babel==4.0.0
 Flask-Cors==5.0.0
