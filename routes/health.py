@@ -13,12 +13,28 @@ health_bp = Blueprint('health', __name__)
 def home():
     """
     Home route for the health blueprint.
-    
-    This route handles requests to the root URL ('/') of the health blueprint.
-    It returns a JSON response with a message indicating the health of the server.
-    
-    Returns:
-        Response: A JSON response with a message, status code, and success status.
+    ---
+    tags:
+      - Health
+    parameters:
+      - in: header
+        name: Accept-Language
+        type: string
+        enum: ["en", "fr", "ar", "es"]
+        required: true
+        description: "Language preference for the response."
+    responses:
+      200:
+        description: Server is running successfully
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+            message:
+              type: string
+      500:
+        description: Server failed to run
     """
     try:
         response_message = _("Server runs with success")
