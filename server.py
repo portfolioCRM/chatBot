@@ -1,8 +1,11 @@
+import os
 from flask import Flask, request
 from flask_cors import CORS
-import os
-from dotenv import load_dotenv
+
 from flask_babel import Babel, _
+from flasgger import Swagger
+
+from dotenv import load_dotenv
 
 # Load environment variables from the .env file
 ''' 
@@ -66,7 +69,62 @@ Register the locale and timezone selector functions with Babel.
 '''
 babel.init_app(app, locale_selector=get_locale, timezone_selector=get_timezone)
 
+app.config['APP_NAME'] = 'My Flask API'
+app.config['APP_VERSION'] = '1.0.0'
 
+swagger_template = {
+    "swagger": "2.0",
+    "info": {
+        "title": app.config['APP_NAME'],
+        "version": app.config['APP_VERSION'],
+        "description": "API documentation for Chat boot API",
+    },
+    "basePath": "/",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "X-API-KEY",
+            "description": "Custom header for API key-based authentication"
+        },
+        "JWTAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT token using the Bearer scheme. Example: 'Bearer {token}'"
+        }
+    },
+    "parameters": {
+        "Accept-Language": {
+            "name": "Accept-Language",
+            "in": "header",
+            "type": "string",
+            "enum": ["en", "fr", "ar", "es"],
+            "description": "Language preference for the response. Use 'en', 'fr', or 'ar'.",
+            "required": False
+        }
+    },
+}
+
+swagger_config = {
+    "headers": [],
+    "specs": [
+        {
+            "endpoint": 'apispec_1',
+            "route": '/apispec_1.json',
+            "rule_filter": lambda rule: True,
+            "model_filter": lambda tag: True
+        }
+    ],
+    "static_url_path": "/flasgger_static",
+    "swagger_ui": True,
+    "specs_route": "/apidocs/"
+}
+swagger = Swagger(app, template=swagger_template, config=swagger_config)
 # Import and register the healthcare Blueprint from the routes module
 '''
 Import the `healthcare` function from the `routes` module and register it 
@@ -79,6 +137,7 @@ from routes.ai import choose_algorithm
 healthcare(app)
 faq(app)
 choose_algorithm(app)
+
 
 if __name__ == '__main__':
     # Read the environment mode from environment variables
