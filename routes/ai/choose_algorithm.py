@@ -15,10 +15,63 @@ algorithm_mapping = {
 @chatbot_bp.route('/predict', methods=['POST'])
 def predict_response():
     """
-    Endpoint to get a predicted response from the chatbot model based on user input.
-    
-    Expects a JSON body with a 'message' key. Optionally accepts a 'dataset' key 
-    to provide a custom dataset for the chatbot.
+    Predict chatbot response.
+    ---
+    tags:
+      - Chatbot
+    description: Predict a response from the chatbot based on user input using a specified algorithm.
+    consumes:
+      - application/json
+    produces:
+      - application/json
+    parameters:
+      - in: body
+        name: body
+        required: true
+        description: "The user input for the chatbot."
+        schema:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+              description: "The message from the user."
+              example: "What is the meaning of life?"
+      - in: header
+        name: Algorithm
+        type: string
+        required: true
+        description: "The algorithm to use for prediction ('svm_model' or 'cbf_model')."
+        enum:
+          - svm_model
+          - cbf_model
+      - in: header
+        name: Accept-Language
+        type: string
+        required: true
+        description: "The language of the response."
+        enum:
+          - en
+          - fr
+          - ar
+          - es
+
+    responses:
+      200:
+        description: Successful response prediction
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              description: "The chatbot's response to the user."
+      400:
+        description: Bad request, message not found
+      404:
+        description: Model not found
+      500:
+        description: Internal server error
     """
     language = request.headers.get('Accept-Language', "en")
     data = request.get_json()
