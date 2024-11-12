@@ -1,0 +1,42 @@
+name: Deploy Flask App to OVH VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install sshpass
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y sshpass
+
+    - name: Deploy to OVH VPS
+      env:
+        VPS_USER: ${{ secrets.VPS_USER }}
+        VPS_HOST: ${{ secrets.VPS_HOST }}
+        PROJECT_DIR: /var/www/raed
+        VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
+      run: |
+        sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "
+          cd $PROJECT_DIR &&
+          git pull origin main &&
+          source venv/bin/activate &&
+          pip install -r requirement.txt &&
+          deactivate
+        "
+
+    - name: Restart Flask Application
+      env:
+        VPS_USER: ${{ secrets.VPS_USER }}
+        VPS_HOST: ${{ secrets.VPS_HOST }}
+        VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
+      run: |
+        sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST
