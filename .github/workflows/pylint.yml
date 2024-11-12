@@ -22,7 +22,7 @@ jobs:
       env:
         VPS_USER: ${{ secrets.VPS_USER }}
         VPS_HOST: ${{ secrets.VPS_HOST }}
-        PROJECT_DIR: /var/www/raed
+        PROJECT_DIR: /var/www/raed/chatBot
         VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
       run: |
         sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "
