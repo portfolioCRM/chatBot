@@ -30,6 +30,7 @@ jobs:
           git pull origin main &&
           source .venv/bin/activate &&
           pip install -r requirement.txt &&
+          pybabel compile -d translations &&
           deactivate
         "
 
