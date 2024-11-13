@@ -12,7 +12,7 @@ health_bp = Blueprint('health', __name__)
 @health_bp.route('/')
 def home():
     """
-    Home route for the health blueprint _test_.
+    Home route for the health blueprint.
     ---
     tags:
       - Health
