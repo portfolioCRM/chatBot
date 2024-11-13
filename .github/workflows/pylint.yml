@@ -41,5 +41,7 @@ jobs:
       run: |
         sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "
           cd $PROJECT_DIR &&
-          source restart_app.sh
+          pwd &&  # Print current working directory
+          ls -l &&  # List files in the directory to ensure restart_app.sh exists
+          ./restart_app.sh
         "
